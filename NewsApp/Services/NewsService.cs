@@ -10,7 +10,9 @@ namespace NewsApp.Services
 
         public async Task<List<NewsArticle>> GetNewsByCategoryAsync(string category)
         {
-            string url = $"https://gnews.io/api/v4/top-headlines?category={category}&lang=en&token=YOUR_API_KEY";
+            string apiKey = "378e6e14dbfb10e5f17335840933f6e2";
+            string url = $"https://gnews.io/api/v4/top-headlines?category={category}&lang=en&token={apiKey}";
+
             var response = await _httpClient.GetStringAsync(url);
 
             var jsonDoc = JsonDocument.Parse(response);

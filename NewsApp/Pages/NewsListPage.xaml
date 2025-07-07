@@ -6,14 +6,25 @@
     Title="{Binding PageTitle}">
 
     <StackLayout Padding="10">
-        <CollectionView x:Name="ArticlesCollectionView" SelectionMode="Single" SelectionChanged="OnArticleSelected">
+        <CollectionView 
+            x:Name="ArticlesCollectionView" 
+            SelectionMode="Single" 
+            SelectionChanged="OnArticleSelected">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame BorderColor="LightGray" Margin="5" Padding="5">
-                        <Grid ColumnDefinitions="100, *" ColumnSpacing="10">
-                            <Image Source="{Binding Image}" WidthRequest="100" HeightRequest="100"/>
-                            <Label Text="{Binding Title}" VerticalOptions="Center"/>
-                        </Grid>
+                    <Frame BorderColor="LightGray" CornerRadius="8" Padding="5" Margin="5">
+                        <HorizontalStackLayout Spacing="10">
+                            <Image 
+                                Source="{Binding Image}" 
+                                WidthRequest="100"
+                                HeightRequest="100"
+                                Aspect="AspectFill"/>
+                            <Label 
+                                Text="{Binding Title}" 
+                                VerticalOptions="Center"
+                                LineBreakMode="WordWrap"
+                                WidthRequest="250"/>
+                        </HorizontalStackLayout>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
