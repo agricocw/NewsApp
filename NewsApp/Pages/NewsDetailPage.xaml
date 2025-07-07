@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="NewsApp.Pages.NewsDetailPage"
+    Title="News Details">
+
+    <ScrollView>
+        <StackLayout Padding="10" Spacing="10">
+            <Image x:Name="ArticleImage" Aspect="AspectFill" HeightRequest="200"/>
+            <Label x:Name="ArticleTitle" FontAttributes="Bold" FontSize="24"/>
+            <Label x:Name="ArticleContent" FontSize="16"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

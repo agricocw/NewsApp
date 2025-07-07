@@ -1,11 +1,9 @@
 using NewsApp.Models;
-using NewsApp.Services;
 
 namespace NewsApp.Pages;
 
 public partial class NewsHomePage : ContentPage
 {
-	public List<Article> ArticleList;
     public List<Category> CategoryList = new List<Category>()
     {
         new Category(){Name="World", ImageUrl = "world.png"},
@@ -17,21 +15,19 @@ public partial class NewsHomePage : ContentPage
         new Category(){Name = "Science", ImageUrl= "science.png"},
         new Category(){Name = "Health", ImageUrl="health.png"},
     };
+
     public NewsHomePage()
-	{
-		InitializeComponent();
-        GetBreakingNews();
-        ArticleList = new List<Article>();
+    {
+        InitializeComponent();
         CvCategories.ItemsSource = CategoryList;
-	}
-	private async Task GetBreakingNews()
-	{
-		var apiService = new ApiService();
-		var newsResult = await apiService.GetNews("Sports");
-		foreach (var item in newsResult.Articles)
-		{
-			ArticleList.Add(item);
-		}
-		CvNews.ItemsSource = ArticleList;
-	}
+    }
+
+    private async void OnCategorySelected(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.CurrentSelection.FirstOrDefault() is Category selectedCategory)
+        {
+            await Navigation.PushAsync(new NewsListPage(selectedCategory.Name.ToLower()));
+            CvCategories.SelectedItem = null;
+        }
+    }
 }

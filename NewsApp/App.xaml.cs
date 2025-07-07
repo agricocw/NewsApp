@@ -8,7 +8,8 @@ namespace NewsApp
         {
             InitializeComponent();
 
-            MainPage = new NewsHomePage();
+            // Enable stack-based navigation
+            MainPage = new NavigationPage(new NewsHomePage());
         }
     }
 }
